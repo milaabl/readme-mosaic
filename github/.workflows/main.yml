@@ -21,10 +21,12 @@ jobs:
         run: pip install -r requirements.txt
       - name: "Build image"
         run: python main.py
-      - name: Commit and push the generated mosaics
-      uses: crazy-max/ghaction-github-pages@v3.1.0
-      with:
-        target_branch: preview
-        build_dir: dist
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: --force
+          commit_user_name: Ludmila
+          commit_user_email: milaabl2405@gmail.com
+          commit_author: Author <milaabl2405@gmail.com>
+          commit_message: "🎨 Generating the mosaic like true Picasso 👩‍🎨"
+          file_pattern: "tmp/* data/*"
