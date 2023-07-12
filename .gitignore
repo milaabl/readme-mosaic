@@ -1,0 +1,3 @@
+tmp/*/*.jpg
+tmp/*/*.png
+__pycache__/
