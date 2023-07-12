@@ -1,0 +1,32 @@
+name: schedule_build
+
+on:
+  repository_dispatch:
+    types: [build-event]
+  schedule:
+    - cron: "0 4 * * *"
+
+jobs:
+  schedule_build:
+    permissions:
+       content: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Setup Python"
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: "Install packages"
+        run: pip install -r requirements.txt
+      - name: "Build image"
+        run: python main.py
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          push_options: --force
+          commit_user_name: Ludmila
+          commit_user_email: milaabl2405@gmail.com
+          commit_author: Author <milaabl2405@gmail.com>
+          commit_message: "🎨 Generating the mosaic like true Picasso 👩‍🎨"
+          file_pattern: "tmp/* data/*"
