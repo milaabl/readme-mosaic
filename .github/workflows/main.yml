@@ -1,15 +1,14 @@
-name: schedule_build
+name: Generate mosaic
 
 on:
-  repository_dispatch:
-    types: [build-event]
   schedule:
     - cron: "0 4 * * *"
+  workflow_dispatch:
 
 jobs:
   schedule_build:
     permissions:
-       content: write
+       contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
