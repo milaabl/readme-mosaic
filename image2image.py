@@ -47,11 +47,9 @@ def main(opt):
 
 
         length = len(images_path)
-        print(length)
         for i in range(length):
             images_path[i] = images_path[i].replace('\\', '/')
 
-        print(images_path)
 
         result = re.search(r'tmp/avatars/([\w.-]+).png', images_path[idx])
         username = result.group(1)

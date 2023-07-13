@@ -29,7 +29,6 @@ def get_all_users():
                 'avatar' : result['avatar_url'] + '&s=15',
                 'username' : result['login']
             })
-        print(str(avatars))
         page += 1
         has_results = get_stargazers_from_api(url, page)
 
@@ -105,7 +104,6 @@ if __name__ == '__main__':
     download_avatars()
     print('Avatars have been downloaded')
     statistics = im.main(im.get_args())
-    print(statistics)
     print('Output picture has been created')
     write_statistics(statistics)
     print('Statistics have been created')
