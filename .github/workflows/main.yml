@@ -1,8 +1,6 @@
 name: Generate mosaic
 
 on:
-  schedule:
-    - cron: "0 4 * * *"
   watch:
     types: [starred]
 
