@@ -45,6 +45,14 @@ def main(opt):
         idx = np.argmin(distance_matrix)
         blank_image[j * opt.stride: (j + 1) * opt.stride, i * opt.stride: (i + 1) * opt.stride, :] = images[idx]
 
+
+        length = len(images_path)
+        print(length)
+        for i in range(length):
+            images_path[i] = images_path[i].replace('\\', '/')
+
+        print(images_path)
+
         result = re.search(r'tmp/avatars/([\w.-]+).png', images_path[idx])
         username = result.group(1)
 

@@ -3,7 +3,8 @@ name: Generate mosaic
 on:
   schedule:
     - cron: "0 4 * * *"
-  workflow_dispatch:
+  watch:
+    types: [starred]
 
 jobs:
   schedule_build:

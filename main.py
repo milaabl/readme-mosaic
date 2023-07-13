@@ -29,7 +29,7 @@ def get_all_users():
                 'avatar' : result['avatar_url'] + '&s=15',
                 'username' : result['login']
             })
-        print('Got page ' + str(page) + ' of stargazers')
+        print(str(avatars))
         page += 1
         has_results = get_stargazers_from_api(url, page)
 
@@ -39,7 +39,11 @@ def get_all_users():
 def download_avatars():
     counter = 1
     for user in get_all_users():
-        urllib.request.urlretrieve(user['avatar'], './tmp/avatars/' + str(user['username']) + '.png')
+        response = urllib.request.urlopen(user['avatar'])
+        image = response.read()
+
+        with open('./tmp/avatars/' + str(user['username']) + '.png', "wb") as file:
+            file.write(image)
 
         filename = 'tmp/steps/step' + format_counter_for_sort(counter) + '.jpg'
         filename_rsz = 'tmp/steps_resize/step' + format_counter_for_sort(counter) + '.jpg'
@@ -90,7 +94,7 @@ def write_statistics(statistics):
         output = output + '|#' + str(index) + '|[@' + statistic[0] + '](https://github.com/' + statistic[0] + ')|' + str(statistic[1]) + '|\n'
 
     # write on README.md
-    file = open('STATISTICS.md', 'w+')
+    file = open('STATISTICS.md', 'w+', encoding='utf-8')
     file.write(output)
     file.close()
 
@@ -101,6 +105,7 @@ if __name__ == '__main__':
     download_avatars()
     print('Avatars have been downloaded')
     statistics = im.main(im.get_args())
+    print(statistics)
     print('Output picture has been created')
     write_statistics(statistics)
     print('Statistics have been created')
