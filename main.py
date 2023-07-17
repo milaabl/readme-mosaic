@@ -8,7 +8,7 @@ import urllib.request
 
 # install dependencies with pip3 (pip3 install -r requirements.txt)
 
-url = 'https://api.github.com/repos/milaabl/milaabl/stargazers'
+url = 'https://api.github.com/repos/milaabl/readme-mosaic/stargazers'
 
 
 def get_stargazers_from_api(api_url, start_page):
