@@ -27,4 +27,4 @@ jobs:
           commit_user_email: milaabl2405@gmail.com
           commit_author: Author <milaabl2405@gmail.com>
           commit_message: "🎨 Generating the mosaic like true Picasso 👩‍🎨"
-          file_pattern: "tmp/* data/*"
+          file_pattern: "tmp/* data/* STATISTICS.md"
