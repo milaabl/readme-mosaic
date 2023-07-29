@@ -1,9 +1,8 @@
 name: Generate mosaic
 
 on:
-  schedule:
-    - cron: "0 4 * * *"
-  workflow_dispatch:
+  watch:
+    types: [starred]
 
 jobs:
   schedule_build:
@@ -28,4 +27,4 @@ jobs:
           commit_user_email: milaabl2405@gmail.com
           commit_author: Author <milaabl2405@gmail.com>
           commit_message: "🎨 Generating the mosaic like true Picasso 👩‍🎨"
-          file_pattern: "tmp/* data/*"
+          file_pattern: "tmp/* data/* STATISTICS.md"
